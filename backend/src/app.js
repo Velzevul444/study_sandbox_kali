@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const { initDb } = require('./db');
 const authRoutes = require('./routes/auth');
 const levelRoutes = require('./routes/levels');
+const adminRoutes = require('./routes/admin');
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/levels', levelRoutes);
+app.use('/api/admin', adminRoutes);
 
 const PORT = process.env.PORT || 4000;
 

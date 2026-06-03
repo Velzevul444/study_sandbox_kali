@@ -1,0 +1,17 @@
+backend/src/data/levels.js:356:    title: 'Уровень 11: SQLi в форме входа',
+backend/src/data/levels.js:380:        if (window.xssLabComplete) window.xssLabComplete('sql-login-bypass');
+backend/src/data/levels.js:444:          if (window.xssLabComplete) window.xssLabComplete('union-sqli');
+backend/src/data/levels.js:486:        if (record.owner !== currentUser && window.xssLabComplete) {
+backend/src/data/levels.js:487:          window.xssLabComplete('idor-invoice');
+backend/src/data/levels.js:534:        if (resolved === '/app/secrets/admin-token.txt' && window.xssLabComplete) {
+backend/src/data/levels.js:535:          window.xssLabComplete('path-traversal');
+backend/src/data/levels.js:541:    title: 'Уровень 15: command injection',
+backend/src/data/levels.js:566:        if ((normalized.includes('; cat /flag.txt') || normalized.includes('&& cat /flag.txt')) && window.xssLabComplete) {
+backend/src/data/levels.js:568:          window.xssLabComplete('command-injection');
+backend/src/data/levels.js:584:  check: level.check || 'Уровень завершается только когда payload реально вызывает alert, confirm или prompt внутри страницы задания.',
+frontend/src/pages/LevelPage.jsx:25:      window.xssLabComplete = markSolved;
+frontend/src/pages/LevelPage.jsx:121:      handleFinish();
+frontend/src/pages/LevelPage.jsx:140:  const handleFinish = async () => {
+frontend/src/pages/LevelPage.jsx:207:                <p className="task-guide-text">{level.goal}</p>
+frontend/src/pages/LevelPage.jsx:211:                <p className="task-guide-text">{level.hint}</p>
+frontend/src/pages/LevelPage.jsx:215:                <p className="task-guide-text">{level.check}</p>

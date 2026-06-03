@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginRequest, saveToken } from '../api';
 
-function Login() {
+function Login({ onAuth }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -12,7 +12,8 @@ function Login() {
     event.preventDefault();
     try {
       const data = await loginRequest({ email, password });
-      saveToken(data.token, data.user.email);
+      saveToken(data.token, data.user.email, data.user.is_admin);
+      if (onAuth) onAuth();
       navigate('/');
     } catch (err) {
       setError(err.message);

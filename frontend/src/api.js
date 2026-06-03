@@ -18,14 +18,21 @@ export async function apiFetch(path, options = {}) {
   });
 }
 
-export function saveToken(token, email) {
+export function saveToken(token, email, isAdmin = false) {
   localStorage.setItem('xss_sandbox_token', token);
   localStorage.setItem('xss_sandbox_email', email);
+  localStorage.setItem('xss_sandbox_is_admin', isAdmin ? 'true' : 'false');
+}
+
+export function saveUser(email, isAdmin = false) {
+  localStorage.setItem('xss_sandbox_email', email);
+  localStorage.setItem('xss_sandbox_is_admin', isAdmin ? 'true' : 'false');
 }
 
 export function logout() {
   localStorage.removeItem('xss_sandbox_token');
   localStorage.removeItem('xss_sandbox_email');
+  localStorage.removeItem('xss_sandbox_is_admin');
 }
 
 export function getToken() {
@@ -36,11 +43,19 @@ export function getUserEmail() {
   return localStorage.getItem('xss_sandbox_email');
 }
 
+export function getIsAdmin() {
+  return localStorage.getItem('xss_sandbox_is_admin') === 'true';
+}
+
 export function loginRequest(credentials) {
   return apiFetch('/auth/login', {
     method: 'POST',
     body: JSON.stringify(credentials),
   });
+}
+
+export function fetchCurrentUser() {
+  return apiFetch('/auth/me');
 }
 
 export function registerRequest(credentials) {
@@ -67,4 +82,8 @@ export function postLevelResult(id, durationSeconds) {
     method: 'POST',
     body: JSON.stringify({ durationSeconds }),
   });
+}
+
+export function fetchAdminResults() {
+  return apiFetch('/admin/results');
 }
